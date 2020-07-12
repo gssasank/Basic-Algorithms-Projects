@@ -7,21 +7,39 @@ def rotated_array_search(input_list, number):
     Returns:
        int: Index or -1
     """
+    first_element = find_first_element(input_list)
+    if first_element == input_list[0]:
+        return binary_search(input_list, number)
+    elif input_list[first_element] == number:
+        return first_element
 
-    pass
+
+def find_first_element(input_list):
+    min = input_list[0]
+    for i in input_list:
+        if i < min:
+            min = i
+    return min
 
 
-def linear_search(input_list, number):
-    for index, element in enumerate(input_list):
-        if element == number:
-            return index
-    return -1
+def binary_search(array, target):
+    first_element = 0
+    last_element = len(array) - 1
+    while first_element <= last_element:
+        key = (first_element + last_element) // 2
+        if array[key] == target:
+            return key
+        else:
+            if target > array[key]:
+                first_element = key
+            elif target < array[key]:
+                last_element = key
 
 
 def test_function(test_case):
     input_list = test_case[0]
     number = test_case[1]
-    if linear_search(input_list, number) == rotated_array_search(input_list, number):
+    if binary_search(input_list, number) == rotated_array_search(input_list, number):
         print("Pass")
     else:
         print("Fail")
