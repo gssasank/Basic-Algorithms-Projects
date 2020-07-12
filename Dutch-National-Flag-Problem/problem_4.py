@@ -21,6 +21,7 @@ def sort_012(input_list):
 
 def test_function(test_case):
     if not len(test_case):
+        print(test_case)
         print("Pass")
         return
     sorted_array = sort_012(test_case)
@@ -32,6 +33,7 @@ def test_function(test_case):
 
 
 test_function([])
+test_function([3, 3])
 test_function([0, 0, 2, 2, 2, 1, 1, 1, 2, 0, 2])
 test_function([2, 1, 2, 0, 0, 2, 1, 0, 1, 0, 0, 2, 2, 2, 1, 2, 0, 0, 0, 2, 1, 0, 2, 0, 0, 1])
 test_function([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2])
