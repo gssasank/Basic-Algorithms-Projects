@@ -1,0 +1,2 @@
+The time complexity is O(n) as we are traversing the array only once and two variables
+were declared to keep track of the max and min values in the array, this way we dont need to sort the entire array
