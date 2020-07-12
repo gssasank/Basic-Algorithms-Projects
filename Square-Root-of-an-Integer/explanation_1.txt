@@ -1,0 +1,1 @@
+The time complexity is O(log(n)) as binary search was used to find the floored value of the square root.
