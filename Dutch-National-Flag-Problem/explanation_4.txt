@@ -1,0 +1,2 @@
+The time complexity is O(n) as we are traversing  the array only once.
+This method only works if the unsorted array consists of the same numbers repeating again and again.
