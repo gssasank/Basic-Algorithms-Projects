@@ -1,0 +1,3 @@
+The time complexity is O(n) as we have to search the entire trie for the words which start with
+the letters we have provided in the interactive search bar.
+
