@@ -1,0 +1,2 @@
+Time complexities is O(n)
+Time complexity is O(n) because every time we have to traverse the entire trie every single time {or n "pages"}
