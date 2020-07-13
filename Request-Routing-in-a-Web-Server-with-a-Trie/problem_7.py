@@ -57,7 +57,7 @@ class Router:
                     current_node = current_node.children[i]
                 else:
                     return None
-            except:
+            except KeyError:
                 return None
         return current_node.handler
 
