@@ -1,0 +1,3 @@
+The time complexity is less than the required complexity - O(n)
+I sed Merge Sort to sort the array (since its the fastest algorithm overall)
+I noticed that in a sorted array the numbers formed by adding alternate numbers for the largest number when added.

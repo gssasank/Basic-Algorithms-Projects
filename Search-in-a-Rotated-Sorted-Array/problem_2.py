@@ -3,46 +3,64 @@ def rotated_array_search(input_list, number):
     Find the index by searching in a rotated sorted array
 
     Args:
+       number:
        input_list(array), number(int): Input array to search and the target
     Returns:
        int: Index or -1
     """
-    first_element_position = find_first_element(input_list)
-    first_element = input_list[first_element_position]
-    if first_element == input_list[0]:
-        return binary_search(input_list, number)
-    elif first_element == number:
-        return first_element_position
-    elif input_list[-1] == number:
-        return len(input_list) - 1
-    elif input_list[-1] > number:
-        return binary_search(input_list[first_element_position:], number)
-    elif input_list[-1] < number:
-        return binary_search(input_list[:first_element_position], number)
+    if len(input_list) == 0 or number is None:
+        return -1
+
+    first = 0
+    last = len(input_list) - 1
+    pivot_index = find_pivot(input_list, first, last)
+
+    if pivot_index == -1:
+        return binary_search(input_list, first, last, number)
     else:
-        return None
+        if input_list[pivot_index] == number:
+            return pivot_index
+        elif number >= input_list[0]:
+            return binary_search(input_list, 0, pivot_index - 1, number)
+
+        return binary_search(input_list, pivot_index + 1, last, number)
 
 
-def find_first_element(input_list):
-    temp = min(input_list)
-    result = [i for i, j in enumerate(input_list) if j == temp]
-    return result[0]
+def find_pivot(array, min, max):
+    if max < min:
+        return -1
+
+    if max == min:
+        return min
+
+    else:
+        mid_index = (min + max) // 2
+
+        if mid_index < max and array[mid_index] > array[mid_index + 1]:
+            return mid_index
+
+        if mid_index > min and array[mid_index - 1] > array[mid_index]:
+            return mid_index - 1
+
+        if array[min] >= array[mid_index]:
+            return find_pivot(array, min, mid_index - 1)
+
+        return find_pivot(array, mid_index + 1, max)
 
 
-def binary_search(array, target):
-    first_element = 0
-    last_element = len(array) - 1
-    while first_element <= last_element:
-        key = (first_element + last_element) // 2
-        if array[key] == target:
-            return key
-        else:
-            if target > array[key]:
-                first_element = key
-            elif target < array[key]:
-                last_element = key
+def binary_search(array, low, high, target):
+    if low > high:
+        return -1
 
-    return None
+    mid_index = (low + high) // 2
+
+    if array[mid_index] == target:
+        return mid_index
+
+    elif array[mid_index] > target:
+        return binary_search(array, low, mid_index - 1, target)
+
+    return binary_search(array, mid_index + 1, high, target)
 
 
 def linear_search(input_list, number):
@@ -66,4 +84,5 @@ test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 4])
 test_function([[6, 7, 8, 1, 2, 3, 4], 10])
-
+test_function([[0], 0])
+test_function([[0, 0, 0, 0, 0, 0, 0], 0])

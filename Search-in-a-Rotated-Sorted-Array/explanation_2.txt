@@ -1,0 +1,2 @@
+Time complexity is O(log(n)), as specified.
+I performed Binary Search on two parts of the array which are sorted, separately.

@@ -16,14 +16,14 @@ def sqrt(number):
         last = number
 
         while first <= last:
-            middle = (first + last)//2
+            middle = (first + last) // 2
 
-            if middle**2 == number:
+            if middle ** 2 == number:
                 return middle
-            elif middle**2 < number:
+            elif middle ** 2 < number:
                 first = middle + 1
                 answer = middle
-            elif middle**2 > number:
+            elif middle ** 2 > number:
                 last = middle - 1
     return answer
 
