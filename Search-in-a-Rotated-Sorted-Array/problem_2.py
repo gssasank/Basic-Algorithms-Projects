@@ -7,19 +7,26 @@ def rotated_array_search(input_list, number):
     Returns:
        int: Index or -1
     """
-    first_element = find_first_element(input_list)
+    first_element_position = find_first_element(input_list)
+    first_element = input_list[first_element_position]
     if first_element == input_list[0]:
         return binary_search(input_list, number)
-    elif input_list[first_element] == number:
-        return first_element
+    elif first_element == number:
+        return first_element_position
+    elif input_list[-1] == number:
+        return len(input_list) - 1
+    elif input_list[-1] > number:
+        return binary_search(input_list[first_element_position:], number)
+    elif input_list[-1] < number:
+        return binary_search(input_list[:first_element_position], number)
+    else:
+        return None
 
 
 def find_first_element(input_list):
-    min = input_list[0]
-    for i in input_list:
-        if i < min:
-            min = i
-    return min
+    temp = min(input_list)
+    result = [i for i, j in enumerate(input_list) if j == temp]
+    return result[0]
 
 
 def binary_search(array, target):
@@ -35,11 +42,20 @@ def binary_search(array, target):
             elif target < array[key]:
                 last_element = key
 
+    return None
+
+
+def linear_search(input_list, number):
+    for index, element in enumerate(input_list):
+        if element == number:
+            return index
+    return -1
+
 
 def test_function(test_case):
     input_list = test_case[0]
     number = test_case[1]
-    if binary_search(input_list, number) == rotated_array_search(input_list, number):
+    if linear_search(input_list, number) == rotated_array_search(input_list, number):
         print("Pass")
     else:
         print("Fail")
@@ -47,6 +63,7 @@ def test_function(test_case):
 
 test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6])
 test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
-test_function([[6, 7, 8, 1, 2, 3, 4], 8])
 test_function([[6, 7, 8, 1, 2, 3, 4], 1])
+test_function([[6, 7, 8, 1, 2, 3, 4], 4])
 test_function([[6, 7, 8, 1, 2, 3, 4], 10])
+
