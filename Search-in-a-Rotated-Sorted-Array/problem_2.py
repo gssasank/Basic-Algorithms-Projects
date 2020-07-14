@@ -24,9 +24,9 @@ def rotated_array_search(input_list, number):
         if input_list[max_element_index] == number:
             return max_element_index
         elif number >= input_list[0]:
-            return binary_search(input_list, 0, max_element_index, number)
+            return binary_search(input_list, 0, max_element_index-1, number)
         else:
-            return binary_search(input_list, max_element_index, last, number)
+            return binary_search(input_list, max_element_index-1, last, number)
 
 
 # Used Non-Recursive Binary Search
