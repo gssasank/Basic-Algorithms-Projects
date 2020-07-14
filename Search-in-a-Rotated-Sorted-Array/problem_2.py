@@ -13,7 +13,7 @@ def rotated_array_search(input_list, number):
 
     first = 0
     last = len(input_list) - 1
-    pivot_index = find_pivot(input_list, first, last)
+    pivot_index = find_pivot_element(input_list, first, last)
 
     if pivot_index == -1:
         return binary_search(input_list, first, last, number)
@@ -26,12 +26,12 @@ def rotated_array_search(input_list, number):
         return binary_search(input_list, pivot_index + 1, last, number)
 
 
-def find_pivot(array, min, max):
+def find_pivot_element(array, min, max):
     if max < min:
         return -1
 
     if max == min:
-        return min
+        return max
 
     else:
         key = (min + max) // 2
@@ -43,11 +43,12 @@ def find_pivot(array, min, max):
             return key - 1
 
         if array[min] >= array[key]:
-            return find_pivot(array, min, key - 1)
+            return find_pivot_element(array, min, key - 1)
 
-        return find_pivot(array, key + 1, max)
+        return find_pivot_element(array, key + 1, max)
 
 
+# Used Recursive Binary Search
 def binary_search(array, low, high, target):
     if low > high:
         return -1
