@@ -1,1 +1,2 @@
 The time complexity is O(log(n)) as binary search was used to find the floored value of the square root.
+Space Complexity is O(1) a there is no new space being used.
