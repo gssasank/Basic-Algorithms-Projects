@@ -24,7 +24,6 @@ class TrieNode(object):
         # Add a child node in this Trie
         self.children[char] = TrieNode()
 
-
 class Trie(object):
     def __init__(self):
         self.root = TrieNode()
@@ -45,6 +44,7 @@ class Trie(object):
 
         current_node.is_word = True
 
+
     def find(self, word):
         """
         Check if word exists in trie, if present return it
@@ -58,6 +58,7 @@ class Trie(object):
             current_node = current_node.children[char]
 
         return current_node
+
 
 
 # # Finding Suffixes
@@ -103,6 +104,7 @@ wordList = [
 for word in wordList:
     MyTrie.insert(word)
 
+
 # In[42]:
 
 
@@ -110,8 +112,8 @@ from ipywidgets import widgets
 from IPython.display import display
 from ipywidgets import interact
 
-
 def f(prefix):
+
     if prefix != '':
         prefixNode = MyTrie.find(prefix)
         if prefixNode:
@@ -122,4 +124,5 @@ def f(prefix):
         print('')
 
 
-interact(f, prefix='t');
+interact(f,prefix='t');
+
