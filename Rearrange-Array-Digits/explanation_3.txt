@@ -1,3 +1,4 @@
-The time complexity is less than the required complexity - O(n)
-I sed Merge Sort to sort the array (since its the fastest algorithm overall)
+The time complexity is less than the required complexity - O(n log(n))
+I used Merge Sort to sort the array (since its the fastest algorithm overall)
 I found out that in a sorted array the numbers formed by adding alternate numbers for the largest number when added.
+Space Complexity is O(n) [Merge Sort's space complexity] is linear]
