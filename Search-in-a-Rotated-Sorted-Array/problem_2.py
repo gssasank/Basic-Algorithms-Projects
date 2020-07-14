@@ -13,53 +13,39 @@ def rotated_array_search(input_list, number):
 
     first = 0
     last = len(input_list) - 1
-    pivot_index = find_pivot_element(input_list, first, last)
-
-    if pivot_index == -1:
-        return binary_search(input_list, first, last, number)
-    else:
-        if input_list[pivot_index] == number:
-            return pivot_index
-        elif number >= input_list[0]:
-            return binary_search(input_list, 0, pivot_index - 1, number)
-
-        return binary_search(input_list, pivot_index + 1, last, number)
-
-
-def find_pivot_element(array, min, max):
-    if max < min:
+    try:
+        max_element_index = input_list.index(max(input_list))
+    except KeyError:
         return -1
 
-    if max == min:
-        return max
-
+    if max_element_index == -1:
+        return binary_search(input_list, first, last, number)
     else:
-        key = (min + max) // 2
-
-        if key < max and array[key] > array[key + 1]:
-            return key
-
-        if key > min and array[key - 1] > array[key]:
-            return key - 1
-
-        if array[min] >= array[key]:
-            return find_pivot_element(array, min, key - 1)
-
-        return find_pivot_element(array, key + 1, max)
+        if input_list[max_element_index] == number:
+            return max_element_index
+        elif number >= input_list[0]:
+            return binary_search(input_list, 0, max_element_index, number)
+        else:
+            return binary_search(input_list, max_element_index, last, number)
 
 
 # Used Recursive Binary Search
-def binary_search(array, low, high, target):
-    if low > high:
-        return -1
+def binary_search(array, start_index, end_index, target):
 
-    key = (low + high) // 2
-    if array[key] == target:
-        return key
-    elif array[key] > target:
-        return binary_search(array, low, key - 1, target)
-    elif array[key] < target:
-        return binary_search(array, key + 1, high, target)
+    while start_index <= end_index:
+        mid_index = (start_index + end_index) // 2
+        mid_element = array[mid_index]
+
+        if target == mid_element:
+            return mid_index
+
+        elif target < mid_element:
+            end_index = mid_index - 1
+
+        else:
+            start_index = mid_index + 1
+
+    return -1
 
 
 def linear_search(input_list, number):
