@@ -1,2 +1,3 @@
-Time complexities is O(n)
-Time complexity is O(n) because every time we have to traverse the entire trie every single time {or n "pages"}
+Class-RouteTrieNode: Time Complexity and Space Complexity of method-suffixes of a node is O(m*n).
+
+Class-RouteTrie: Time Complexity and Space Complexity of method-insert is linear O(n).
