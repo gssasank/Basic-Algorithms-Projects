@@ -1,3 +1,5 @@
-The time complexity to find a prefix is O(n) as we have to search the entire trie for the words which start with
-the letters we have provided in the interactive search bar.
-Space complexity is also same for the same reason.
+Class-TrieNode: Time Complexity and Space Complexity of method-insert a character is constant O(1).
+Class-TrieNode: Time Complexity and Space Complexity of method-suffixes of a node is O(m*n).
+
+Class-Trie: Time Complexity and Space Complexity of method-insert is linear O(n).
+Class-Trie: Time Complexity and Space Complexity of method-find is linear O(n) and constant O(1) respectively.
