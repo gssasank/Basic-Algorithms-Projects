@@ -8,8 +8,8 @@ def rearrange_digits(input_list):
        (int),(int): Two maximum sums
     """
     sorted_list = merge_sort(input_list)
-    num_1 = ""
-    num_2 = ""
+    num_1 = "0"
+    num_2 = "0"
     index = len(sorted_list) - 1
     while index >= 0:
         if index % 2 == 0:
@@ -71,3 +71,9 @@ test_case_2 = [[0, 0, 0, 0, 0, 0, 0], [0, 0]]
 test_function(test_case_2)
 test_case_3 = [[9, 8, 7, 6, 5, 4, 3, 2, 1], [97531, 8642]]
 test_function(test_case_3)
+# edge case : single value list
+test_function([[5], [5, 0]])
+
+# edge case 2: large set and large numbers
+test_function([[i for i in range(0, 101)],
+               [int("".join(map(str, range(100, -1, -2)))), int("".join(map(str, range(99, -1, -2))))]])

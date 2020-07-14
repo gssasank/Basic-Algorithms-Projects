@@ -1,3 +1,5 @@
 Class-RouteTrieNode: Time Complexity and Space Complexity is O(m*n) as inserting in trie takes m*n time in worst case.
 
 Class-RouteTrie: Time Complexity and Space Complexity of method-insert is linear O(n) as we are iterating through the entire list "pages".
+
+Space Complexity: Complexity: O(n * m) where n is the number of unique routes or URL(s) and m is the length of the longest piece of URL separated by backslash

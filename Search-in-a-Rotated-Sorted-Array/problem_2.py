@@ -86,3 +86,12 @@ test_function([[6, 7, 8, 1, 2, 3, 4], 4])
 test_function([[6, 7, 8, 1, 2, 3, 4], 10])
 test_function([[0], 0])
 test_function([[0, 0, 0, 0, 0, 0, 0], 0])
+
+# edge test 1  empty string
+test_function([[], 1])
+# edge test 2  large list
+test_list = [i for i in range(1011, 10000)] + [i for i in range(0, 1011)]
+test_function([test_list, 6])
+# edge test 3  large list with negative numbers
+test_list = [i for i in range(1011, 10000)] + [i for i in range(-1000, 1011)]
+test_function([test_list, -60])
