@@ -34,33 +34,31 @@ def find_pivot(array, min, max):
         return min
 
     else:
-        mid_index = (min + max) // 2
+        key = (min + max) // 2
 
-        if mid_index < max and array[mid_index] > array[mid_index + 1]:
-            return mid_index
+        if key < max and array[key] > array[key + 1]:
+            return key
 
-        if mid_index > min and array[mid_index - 1] > array[mid_index]:
-            return mid_index - 1
+        if key > min and array[key - 1] > array[key]:
+            return key - 1
 
-        if array[min] >= array[mid_index]:
-            return find_pivot(array, min, mid_index - 1)
+        if array[min] >= array[key]:
+            return find_pivot(array, min, key - 1)
 
-        return find_pivot(array, mid_index + 1, max)
+        return find_pivot(array, key + 1, max)
 
 
 def binary_search(array, low, high, target):
     if low > high:
         return -1
 
-    mid_index = (low + high) // 2
-
-    if array[mid_index] == target:
-        return mid_index
-
-    elif array[mid_index] > target:
-        return binary_search(array, low, mid_index - 1, target)
-
-    return binary_search(array, mid_index + 1, high, target)
+    key = (low + high) // 2
+    if array[key] == target:
+        return key
+    elif array[key] > target:
+        return binary_search(array, low, key - 1, target)
+    elif array[key] < target:
+        return binary_search(array, key + 1, high, target)
 
 
 def linear_search(input_list, number):
