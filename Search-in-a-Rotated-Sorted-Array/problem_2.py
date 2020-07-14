@@ -29,7 +29,7 @@ def rotated_array_search(input_list, number):
             return binary_search(input_list, max_element_index, last, number)
 
 
-# Used Recursive Binary Search
+# Used Non-Recursive Binary Search
 def binary_search(array, start_index, end_index, target):
 
     while start_index <= end_index:
